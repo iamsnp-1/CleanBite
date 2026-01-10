@@ -55,20 +55,6 @@ class _TodaysHygieneChecklistScreenState
         centerTitle: true,
       ),
 
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xFF66B88F),
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.trending_up), label: "Progress"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.support_agent), label: "Support"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Settings"),
-        ],
-      ),
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -88,7 +74,7 @@ class _TodaysHygieneChecklistScreenState
             const SizedBox(height: 32),
 
             const Text(
-              "Hygiene Standards Overview",
+              "",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
@@ -96,12 +82,10 @@ class _TodaysHygieneChecklistScreenState
             ),
             const SizedBox(height: 6),
             const Text(
-              "Point values for compliance categories",
+              "",
               style: TextStyle(color: Colors.grey),
             ),
 
-            const SizedBox(height: 16),
-            ...overviewTiles,
           ],
         ),
       ),
@@ -248,19 +232,6 @@ class _TodaysHygieneChecklistScreenState
     );
   }
 }
-
-// ---------------- OVERVIEW ----------------
-
-final List<Widget> overviewTiles = [
-  overviewTile("Personal Hygiene", "+15 pts"),
-  overviewTile("Utensil Cleanliness", "+15 pts"),
-  overviewTile("Water Safety", "+10 pts"),
-  overviewTile("Food Storage", "+15 pts"),
-  overviewTile("Waste Disposal", "+10 pts"),
-  overviewTile("Pest Control", "+10 pts"),
-  overviewTile("Cooking & Freshness", "+25 pts"),
-];
-
 Widget overviewTile(String title, String points) {
   return Container(
     margin: const EdgeInsets.only(bottom: 12),

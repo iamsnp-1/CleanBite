@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'hygiene_tasks_screen.dart';
 import 'notifications_screen.dart';
+import 'certificate_screen.dart';
+import 'training_screen.dart';
+import 'progress_screen.dart';
+import 'help_screen.dart';
+import 'settings_screen.dart';
+import 'profile_screen.dart';
+import 'qr_screen.dart';
+
 
 
 
@@ -20,6 +28,7 @@ class _TaskDashboardScreenState extends State<TaskDashboardScreen> {
 
       // ---------------- APP BAR ----------------
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         titleSpacing: 20,
@@ -46,15 +55,31 @@ class _TaskDashboardScreenState extends State<TaskDashboardScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.qr_code_rounded),
-            onPressed: () {},
+            onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const QRScreen()),
+            );
+          },
           ),
           Padding(
             padding: const EdgeInsets.only(right: 12),
-            child: CircleAvatar(
-              backgroundColor: const Color(0xFFD9F1E3),
-              child: const Icon(Icons.person, color: Colors.black),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(30),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                );
+              },
+              child: const CircleAvatar(
+                backgroundColor: Color(0xFFD9F1E3),
+                child: Icon(Icons.person, color: Colors.black),
+              ),
             ),
           ),
+
+          
         ],
       ),
 
@@ -110,14 +135,20 @@ class _TaskDashboardScreenState extends State<TaskDashboardScreen> {
                   icon: Icons.workspace_premium,
                   title: "View Certificate",
                   subtitle: "Download credentials",
-                  onTap: () {},
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const CertificateScreen()),
+                    ),
                 ),
                 actionTile(
                   context,
                   icon: Icons.school,
                   title: "Training",
                   subtitle: "Access 12 modules",
-                  onTap: () {},
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const TrainingScreen()),
+                    ),
                 ),
                 actionTile(
                   context,
@@ -162,27 +193,57 @@ class _TaskDashboardScreenState extends State<TaskDashboardScreen> {
 
       // ---------------- BOTTOM NAV ----------------
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xFF66B88F),
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.show_chart),
-            label: "Progress",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help_outline),
-            label: "Help",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "Settings",
-          ),
-        ],
-      ),
+  type: BottomNavigationBarType.fixed, // 🔥 IMPORTANT
+  currentIndex: 0,
+
+  showSelectedLabels: true,
+  showUnselectedLabels: true,
+
+  selectedItemColor: const Color(0xFF66B88F),
+  unselectedItemColor: Colors.grey,
+
+  selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+  unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
+
+  onTap: (index) {
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const ProgressScreen()),
+      );
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const HelpScreen()),
+      );
+    } else if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const SettingsScreen()),
+      );
+    }
+  },
+
+  items: const [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.home),
+      label: "Home",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.show_chart),
+      label: "Progress",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.help_outline),
+      label: "Help",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.settings),
+      label: "Settings",
+    ),
+  ],
+),
+
     );
   }
 
@@ -294,6 +355,7 @@ final List<Map<String, dynamic>> standards = [
     "icon": Icons.clean_hands,
     "color": Colors.blue,
     "bg": const Color(0xFFE6F0FF),
+    
   },
   {
     "title": "Utensil Cleanliness",
