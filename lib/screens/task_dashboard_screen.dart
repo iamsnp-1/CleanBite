@@ -13,162 +13,155 @@ class TaskDashboardScreen extends StatefulWidget {
 
 class _TaskDashboardScreenState extends State<TaskDashboardScreen> {
   int currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F8F5),
+      backgroundColor: const Color(0xFFF7FAF8),
 
       // ---------------- APP BAR ----------------
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.person_outline, color: Colors.black),
-          onPressed: () {
-            // TODO: Go to profile
-          },
+        titleSpacing: 20,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Text(
+              "Rajesh Kumar",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              "Golden Chaat Corner",
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.grey,
+              ),
+            ),
+          ],
         ),
-        title: const Text(
-          "Welcome, Vendor!",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications_none, color: Colors.black),
-            onPressed: () {
-              // TODO: Notifications
-            },
+            icon: const Icon(Icons.qr_code_rounded),
+            onPressed: () {},
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: CircleAvatar(
+              backgroundColor: const Color(0xFFD9F1E3),
+              child: const Icon(Icons.person, color: Colors.black),
+            ),
           ),
         ],
       ),
 
       // ---------------- BODY ----------------
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            // Certification Status
+            // -------- STATUS --------
             Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               decoration: BoxDecoration(
-                color: const Color(0xFFEFF7F2),
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: const Color(0xFFA7E0BC)),
+                color: const Color(0xFFFFF2E5),
+                borderRadius: BorderRadius.circular(20),
               ),
-              child: Column(
-                children: const [
-                  Text(
-                    "Certification Status",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Not Certified Yet",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      color: Color(0xFF4CAF50),
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    "Complete tasks to earn certification",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 30),
-
-            // Quick Actions
-            const Text(
-              "Quick Actions",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w800,
+              child: const Text(
+                "● Hygiene in Progress",
+                style: TextStyle(
+                  color: Colors.deepOrange,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
 
             const SizedBox(height: 20),
 
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                childAspectRatio: 1,
-                children: [
-                  dashboardTile(
-                        Icons.verified_outlined,
-                        "View Certificate",
-                        "Access your certification",
-                        () {
-                          // TODO: Open certificate screen
-                        },
+            // -------- QUICK ACTIONS --------
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              children: [
+                actionTile(
+                  context,
+                  icon: Icons.checklist,
+                  title: "Hygiene Checklist",
+                  subtitle: "Complete daily tasks",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const TodaysHygieneChecklistScreen(),
                       ),
+                    );
+                  },
+                ),
+                actionTile(
+                  context,
+                  icon: Icons.workspace_premium,
+                  title: "View Certificate",
+                  subtitle: "Download credentials",
+                  onTap: () {},
+                ),
+                actionTile(
+                  context,
+                  icon: Icons.school,
+                  title: "Training",
+                  subtitle: "Access 12 modules",
+                  onTap: () {},
+                ),
+                actionTile(
+                  context,
+                  icon: Icons.notifications,
+                  title: "Notifications",
+                  subtitle: "3 new updates",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const NotificationsScreen(),
+                      ),
+                    );
+                  },
+                  badge: true,
+                ),
+              ],
+            ),
 
-                  dashboardTile(
-                      Icons.checklist,
-                      "Hygiene Checklist",
-                      "Complete daily tasks",
-                      () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const HygieneTasksScreen(),
-                          ),
-                        );
-                      },
-                    ),
+            const SizedBox(height: 30),
 
-                  dashboardTile(
-                    Icons.school_outlined,
-                    "Training",
-                    "Access modules",
-                    () {
-                      // TODO: Training
-                    },
-                  ),
-                  dashboardTile(
-                    Icons.notifications_none,
-                    "Notifications",
-                    "View your updates",
-                    () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const NotificationsScreen(),
-                        ),
-                      );
-                    },
-                  ),
-
-                ],
+            // -------- STANDARDS --------
+            const Text(
+              "Hygiene Standards You May Be Checked On",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w800,
               ),
             ),
+            const SizedBox(height: 6),
+            const Text(
+              "Any 3 of these will be assigned daily",
+              style: TextStyle(color: Colors.grey),
+            ),
+
+            const SizedBox(height: 20),
+
+            ...standards.map((item) => standardTile(item)).toList(),
           ],
         ),
       ),
 
       // ---------------- BOTTOM NAV ----------------
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) {
-          setState(() => currentIndex = i);
-          // TODO: switch screens later
-        },
         selectedItemColor: const Color(0xFF66B88F),
         unselectedItemColor: Colors.grey,
         items: const [
@@ -177,56 +170,177 @@ class _TaskDashboardScreenState extends State<TaskDashboardScreen> {
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
+            icon: Icon(Icons.show_chart),
+            label: "Progress",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.support_agent),
-            label: "Support",
+            icon: Icon(Icons.help_outline),
+            label: "Help",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
           ),
         ],
       ),
     );
   }
 
-  // ---------------- TILE ----------------
-  Widget dashboardTile(
-    IconData icon,
-    String title,
-    String subtitle,
-    VoidCallback onTap,
-  ) {
+  // ---------------- COMPONENTS ----------------
+
+  static Widget actionTile(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+    bool badge = false,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFFF9FBF9),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: const Color(0xFFE0E6E2)),
-        ),
         padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: const Color(0xFFA7E0BC),
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, size: 42, color: const Color(0xFF66B88F)),
-            const SizedBox(height: 14),
+            Stack(
+              children: [
+                Icon(icon, size: 36),
+                if (badge)
+                  const Positioned(
+                    right: 0,
+                    top: 0,
+                    child: CircleAvatar(
+                      radius: 5,
+                      backgroundColor: Colors.red,
+                    ),
+                  ),
+              ],
+            ),
+            const Spacer(),
             Text(
               title,
               style: const TextStyle(
-                fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
-              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: 4),
             Text(
               subtitle,
-              style: const TextStyle(color: Colors.grey),
-              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 13),
             ),
           ],
         ),
       ),
     );
   }
+
+  static Widget standardTile(Map<String, dynamic> item) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: item["bg"],
+            child: Icon(item["icon"], color: item["color"]),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item["title"],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  item["time"],
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ],
+            ),
+          ),
+          Text(
+            item["points"],
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              color: Colors.green,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
+
+// ---------------- DATA ----------------
+
+final List<Map<String, dynamic>> standards = [
+  {
+    "title": "Personal Hygiene",
+    "time": "Est. 5 mins",
+    "points": "+15 pts",
+    "icon": Icons.clean_hands,
+    "color": Colors.blue,
+    "bg": const Color(0xFFE6F0FF),
+  },
+  {
+    "title": "Utensil Cleanliness",
+    "time": "Est. 8 mins",
+    "points": "+15 pts",
+    "icon": Icons.restaurant,
+    "color": Colors.teal,
+    "bg": const Color(0xFFE6FAF8),
+  },
+  {
+    "title": "Water Safety",
+    "time": "Est. 3 mins",
+    "points": "+10 pts",
+    "icon": Icons.water_drop,
+    "color": Colors.blueAccent,
+    "bg": const Color(0xFFEAF3FF),
+  },
+  {
+    "title": "Food Storage",
+    "time": "Est. 10 mins",
+    "points": "+15 pts",
+    "icon": Icons.inventory_2,
+    "color": Colors.orange,
+    "bg": const Color(0xFFFFF2E5),
+  },
+  {
+    "title": "Waste Disposal",
+    "time": "Est. 5 mins",
+    "points": "+10 pts",
+    "icon": Icons.delete,
+    "color": Colors.grey,
+    "bg": const Color(0xFFF1F1F1),
+  },
+  {
+    "title": "Pest Control",
+    "time": "Est. 5 mins",
+    "points": "+10 pts",
+    "icon": Icons.bug_report,
+    "color": Colors.red,
+    "bg": const Color(0xFFFFEAEA),
+  },
+  {
+    "title": "Cooking & Freshness",
+    "time": "Est. 12 mins",
+    "points": "+25 pts",
+    "icon": Icons.local_fire_department,
+    "color": Colors.deepOrange,
+    "bg": const Color(0xFFFFEFE8),
+  },
+];

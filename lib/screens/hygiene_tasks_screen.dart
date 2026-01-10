@@ -1,201 +1,116 @@
 import 'package:flutter/material.dart';
-import 'task_detail_screen2.dart';
+import 'task_detail_screen.dart';
+import '../utils/page_transition.dart';
 
-class HygieneTasksScreen extends StatefulWidget {
-  const HygieneTasksScreen({super.key});
+class TodaysHygieneChecklistScreen extends StatefulWidget {
+  const TodaysHygieneChecklistScreen({super.key});
 
   @override
-  State<HygieneTasksScreen> createState() => _HygieneTasksScreenState();
+  State<TodaysHygieneChecklistScreen> createState() =>
+      _TodaysHygieneChecklistScreenState();
 }
 
-class _HygieneTasksScreenState extends State<HygieneTasksScreen> {
+class _TodaysHygieneChecklistScreenState
+    extends State<TodaysHygieneChecklistScreen> {
   int score = 0;
 
-  final List<Map<String, dynamic>> tasks = [
+  final List<Map<String, dynamic>> todayTasks = [
     {
       "title": "Personal Hygiene",
       "time": "5 mins",
-      "points": 10,
-      "icon": Icons.clean_hands,
-      "completed": false,
-    },
-    {
-      "title": "Utensil Cleanliness",
-      "time": "10 mins",
       "points": 15,
-      "icon": Icons.restaurant,
-      "completed": false,
+      "icon": Icons.clean_hands,
+      "status": "NOT STARTED",
     },
     {
       "title": "Water Safety",
-      "time": "5 mins",
+      "time": "3 mins",
       "points": 10,
       "icon": Icons.water_drop,
-      "completed": false,
-    },
-    {
-      "title": "Food Storage",
-      "time": "15 mins",
-      "points": 20,
-      "icon": Icons.inventory_2,
-      "completed": false,
-    },
-    {
-      "title": "Waste Disposal",
-      "time": "5 mins",
-      "points": 10,
-      "icon": Icons.delete,
-      "completed": false,
-    },
-    {
-      "title": "Pest Control",
-      "time": "10 mins",
-      "points": 15,
-      "icon": Icons.bug_report,
-      "completed": false,
+      "status": "NOT STARTED",
     },
     {
       "title": "Cooking & Freshness",
-      "time": "20 mins",
-      "points": 20,
-      "icon": Icons.local_fire_department,
-      "completed": false,
+      "time": "12 mins",
+      "points": 25,
+      "icon": Icons.restaurant,
+      "status": "NOT STARTED",
     },
   ];
-
-  bool get isCertified => score >= 70;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F8F5),
-
-      // ---------------- APP BAR ----------------
+      backgroundColor: const Color(0xFFF8FAF9),
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0,
-        leading: const BackButton(color: Colors.black),
+        backgroundColor: Colors.white,
         title: const Text(
-          "Hygiene Certification",
+          "Today's Hygiene Checklist",
           style: TextStyle(
-            color: Colors.black,
             fontWeight: FontWeight.w700,
+            color: Colors.black,
           ),
         ),
         centerTitle: true,
       ),
 
-      // ---------------- BODY ----------------
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: const Color(0xFF66B88F),
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.trending_up), label: "Progress"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.support_agent), label: "Support"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: "Settings"),
+        ],
+      ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            // ---------- PROFILE ----------
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFFEFF7F2),
-                borderRadius: BorderRadius.circular(18),
-              ),
-              child: Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 26,
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.person, size: 30),
-                  ),
-                  const SizedBox(width: 14),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Vendor Name",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Chip(
-                        label: Text(
-                          isCertified
-                              ? "Certified"
-                              : "Not Certified Yet",
-                        ),
-                        backgroundColor: isCertified
-                            ? const Color(0xFFA7E0BC)
-                            : const Color(0xFFFFF3C4),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+            const Text(
+              "Complete today’s tasks to improve your hygiene score and reach certification (80+ required)",
+              style: TextStyle(color: Colors.grey),
             ),
+            const SizedBox(height: 16),
 
+            overallScoreCard(),
             const SizedBox(height: 20),
 
-            // ---------- SCORE ----------
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(18),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Text(
-                        "Current Score",
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                      ),
-                      const Spacer(),
-                      Text(
-                        "$score / 100",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  LinearProgressIndicator(
-                    value: score / 100,
-                    minHeight: 10,
-                    backgroundColor: const Color(0xFFE6E6E6),
-                    valueColor: const AlwaysStoppedAnimation(
-                      Color(0xFF66B88F),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            ...todayTasks.map(taskCard).toList(),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 32),
 
             const Text(
-              "Complete to Get Certified",
+              "Hygiene Standards Overview",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.w800,
               ),
             ),
+            const SizedBox(height: 6),
+            const Text(
+              "Point values for compliance categories",
+              style: TextStyle(color: Colors.grey),
+            ),
 
             const SizedBox(height: 16),
-
-            ...tasks.map((task) => taskTile(task)).toList(),
+            ...overviewTiles,
           ],
         ),
       ),
     );
   }
 
-  // ---------------- TASK TILE ----------------
-  Widget taskTile(Map<String, dynamic> task) {
+  // ---------------- OVERALL SCORE ----------------
+  Widget overallScoreCard() {
     return Container(
-      margin: const EdgeInsets.only(bottom: 14),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -203,10 +118,61 @@ class _HygieneTasksScreenState extends State<HygieneTasksScreen> {
       ),
       child: Row(
         children: [
+          const CircleAvatar(
+            backgroundColor: Color(0xFFEFF7F2),
+            child: Icon(Icons.bar_chart),
+          ),
+          const SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "OVERALL SCORE",
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                "$score / 100",
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+          const Spacer(),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.grey.shade300),
+            ),
+            child: const Text("Not Started"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ---------------- TASK CARD ----------------
+  Widget taskCard(Map<String, dynamic> task) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: Row(
+        children: [
           CircleAvatar(
             radius: 22,
-            backgroundColor: const Color(0xFFA7E0BC),
-            child: Icon(task["icon"], color: Colors.black),
+            backgroundColor: const Color(0xFFEFF7F2),
+            child: Icon(task["icon"], color: const Color(0xFF66B88F)),
           ),
           const SizedBox(width: 14),
           Expanded(
@@ -216,51 +182,64 @@ class _HygieneTasksScreenState extends State<HygieneTasksScreen> {
                 Text(
                   task["title"],
                   style: const TextStyle(
-                    fontSize: 16,
                     fontWeight: FontWeight.w700,
+                    fontSize: 16,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "${task["time"]}  •  +${task["points"]} Points",
+                  "${task["time"]}  •  Contributes to hygiene score",
                   style: const TextStyle(color: Colors.grey),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF1F3F2),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    task["status"],
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
           ElevatedButton(
-            onPressed: task["completed"]
-                ? null
-                : () async {
-                    final completed = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => TaskDetailScreen(
-                          taskTitle: task["title"],
-                        ),
-                      ),
-                    );
+            onPressed: () async {
+              final done = await Navigator.push(
+                context,
+                FadeSlideRoute(
+                  page: TaskDetailScreen(
+                    taskTitle: task["title"],
+                  ),
+                ),
+              );
 
-                    if (completed == true) {
-                      setState(() {
-                        task["completed"] = true;
-                        score += task["points"] as int;
-                      });
-                    }
-                  },
+              if (done == true) {
+                setState(() {
+                  task["status"] = "COMPLETED";
+                  score += task["points"] as int;
+                });
+              }
+            },
             style: ElevatedButton.styleFrom(
-              backgroundColor: task["completed"]
-                  ? Colors.grey.shade400
-                  : const Color(0xFFA7E0BC),
+              backgroundColor: const Color(0xFFA7E0BC),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            child: Text(
-              task["completed"] ? "Done" : "Start",
-              style: const TextStyle(
-                color: Colors.black,
+            child: const Text(
+              "Start Task",
+              style: TextStyle(
                 fontWeight: FontWeight.w700,
+                color: Colors.black,
               ),
             ),
           ),
@@ -268,4 +247,44 @@ class _HygieneTasksScreenState extends State<HygieneTasksScreen> {
       ),
     );
   }
+}
+
+// ---------------- OVERVIEW ----------------
+
+final List<Widget> overviewTiles = [
+  overviewTile("Personal Hygiene", "+15 pts"),
+  overviewTile("Utensil Cleanliness", "+15 pts"),
+  overviewTile("Water Safety", "+10 pts"),
+  overviewTile("Food Storage", "+15 pts"),
+  overviewTile("Waste Disposal", "+10 pts"),
+  overviewTile("Pest Control", "+10 pts"),
+  overviewTile("Cooking & Freshness", "+25 pts"),
+];
+
+Widget overviewTile(String title, String points) {
+  return Container(
+    margin: const EdgeInsets.only(bottom: 12),
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(14),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
+        ),
+        Text(
+          points,
+          style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            color: Colors.green,
+          ),
+        ),
+      ],
+    ),
+  );
 }

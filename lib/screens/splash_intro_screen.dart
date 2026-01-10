@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'language_selection_screen.dart';
+import 'login_screen.dart';
 
 class SplashIntroScreen extends StatefulWidget {
   const SplashIntroScreen({super.key});
@@ -38,7 +38,7 @@ class _SplashIntroScreenState extends State<SplashIntroScreen>
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => const LanguageSelectionScreen(),
+          builder: (_) => const LoginScreen(),
         ),
       );
     });

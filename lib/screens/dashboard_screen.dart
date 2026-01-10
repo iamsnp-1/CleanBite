@@ -21,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
                 child: const Text('Start'),
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => TaskDetailScreen(taskId: t.id)),
+                  MaterialPageRoute(builder: (_) => TaskDetailScreen(taskTitle: t.id)),
                 ),
               ),
             ),
