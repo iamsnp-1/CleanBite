@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Event Booking - Vendor Search | CleanBite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#A0D9B5",
+                        "primary-dark": "#7dbd95",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0d1510",
+                    },
+                    fontFamily: {
+                        "sans": ["'Plus Jakarta Sans'", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 25px -5px rgba(0, 0, 0, 0.02), 0 8px 10px -6px rgba(0, 0, 0, 0.03)',
+                        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-refined {
+            @apply w-full rounded-2xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 px-5 py-4 transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none text-slate-800 dark:text-slate-200 placeholder:text-slate-400 shadow-sm;
+        }
+        select.form-input-refined {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button onclick="history.back()" class="flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-medium">Back</span>
+</button>
+<div onclick="window.location.href='homepage.html'" class="flex items-center gap-3 cursor-pointer">
+<img src="Screenshot 2025-11-27 160334.png" alt="CleanBite Logo" class="size-9 rounded-lg object-cover">
+<h2 class="text-2xl font-black tracking-tight text-slate-800 dark:text-white">CleanBite</h2>
+</div>
+</div>
+<div onclick="window.location.href='profile.html'" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-11 ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-slate-900 shadow-sm cursor-pointer" style='background-image: url("profilepic.jpeg");'></div>
+</header>
+<main class="flex-1 flex justify-center py-12 px-4 sm:px-6">
+<div class="max-w-[900px] w-full flex flex-col gap-12">
+<div class="space-y-6">
+<div class="text-center mb-4">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Identify Your Vendor</h2>
+<p class="text-slate-500 text-sm mt-1">Select from our network of CleanBite-certified, hygiene-first partners.</p>
+</div>
+<div class="relative max-w-2xl mx-auto group">
+<div class="absolute left-6 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-2xl group-focus-within:scale-110 transition-transform">search_check</span>
+</div>
+<input class="w-full rounded-3xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 pl-16 pr-6 py-6 transition-all duration-300 focus:border-primary focus:ring-8 focus:ring-primary/5 outline-none text-lg text-slate-800 dark:text-slate-200 placeholder:text-slate-400 shadow-premium" placeholder="Search for certified vendors..." type="text"/>
+<div class="absolute top-full left-0 right-0 mt-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-premium z-40 overflow-hidden opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 translate-y-2 group-focus-within:translate-y-0">
+<div class="p-2">
+<button class="w-full flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-colors text-left group/item">
+<div class="size-12 shrink-0 rounded-lg overflow-hidden">
+<img alt="Vendor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ818mgoWYfBBlqozlTN_qLtNtM3qULbAK5hwIbq81HZDZw2lf4vzmmw94_zNI79EqBBIVTiNIJou9WhoZEDP7qC_IAyIVuw3yxFr6MqRR71Q4eO9u80jJWOhpdJdEhtL8VVq3JJ-V9ZObsEROyoZsXSdkOO7Xz_QMpgVoomWz8_eEL6xWVxS4d7iBdel4tYoBP0g07LCxryL4yyZ7pRw4dzVj47AO2rWZqp8XGBGJGo_S5h3lE7ylxKHI31K75y1tVpicuBeoHAI"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">The Taco Truck El Dorado</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="px-1.5 py-0.5 bg-primary/20 text-primary-dark text-[9px] font-black uppercase rounded">Grade A</span>
+<span class="text-[10px] text-slate-400">Certified Partner</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover/item:text-primary transition-colors">chevron_right</span>
+</button>
+<button class="w-full flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-colors text-left group/item">
+<div class="size-12 shrink-0 rounded-lg overflow-hidden">
+<img alt="Vendor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAto6t0FVkU1s_TGdp35W95DaMcvgk2pL_Hz7k57LLIbGP61YVJTU9t759zXrjykToCjscrq4IXPMRmAUnMnbuM0SDOUNb8_3pfP_YLXm_NWs0Ch_hMjqJeG0MwqoSacy-5ISkpEGSm8Ahkt5mguAQRmYCxuPVpBPn98pUijKKrrvBHJenGDbjTcll6maVJgsHZub2OQTtvvGH3nJ1Z4FFsgFD8GrDY3VXPb_kYORAWMXl0SjBWn53L2Fm6NWPRyuIFJG9EP2UahqU"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Artisan Burgers &amp; Co</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="px-1.5 py-0.5 bg-primary/20 text-primary-dark text-[9px] font-black uppercase rounded">Grade A</span>
+<span class="text-[10px] text-slate-400">Certified Partner</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover/item:text-primary transition-colors">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-3xl shadow-premium border border-slate-100 dark:border-slate-800 p-8 md:p-12">
+<div class="mb-10 flex items-center gap-4">
+<div class="size-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary-dark">
+<span class="material-symbols-outlined">event_note</span>
+</div>
+<div>
+<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">Event Logistics</h2>
+<p class="text-slate-500 text-sm">Provide the specifics for your professional event.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+<div class="space-y-3">
+<label class="block text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Event Category</label>
+<div class="relative">
+<select class="form-input-refined appearance-none pr-10">
+<option disabled="" selected="" value="">Select event type</option>
+<option value="college">College Fest</option>
+<option value="corporate">Corporate Office</option>
+<option value="private">Private Party</option>
+<option value="wedding">Wedding / Reception</option>
+<option value="other">Other Outdoor Event</option>
+</select>
+<span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="block text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Preferred Date</label>
+<div class="relative">
+<input class="form-input-refined" type="date"/>
+<span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">calendar_month</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="block text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Expected Guests</label>
+<div class="relative">
+<input class="form-input-refined" type="number" min="1" max="1000" placeholder="e.g. 50" required/>
+<span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">group</span>
+</div>
+</div>
+<div class="space-y-3 md:col-span-2">
+<label class="block text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Location / Venue Name</label>
+<div class="relative">
+<input class="form-input-refined pl-12" placeholder="e.g. Stanford University Main Quad" type="text"/>
+<button onclick="openMapModal()" class="absolute right-5 top-1/2 -translate-y-1/2 text-primary-dark text-[11px] font-black tracking-wider uppercase hover:text-slate-900 dark:hover:text-white transition-colors">SET ON MAP</button>
+</div>
+</div>
+<div class="space-y-3 md:col-span-2">
+<label class="block text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Special Requirements (Optional)</label>
+<textarea class="form-input-refined min-h-[140px] py-5" placeholder="Mention any specific setup needs or dietary focuses..."></textarea>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-5">
+<button class="flex-[3] bg-gradient-to-r from-primary to-primary-dark text-slate-900 font-black h-16 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98] transition-all duration-300" onclick="handleBooking()">
+<span class="material-symbols-outlined font-black">send</span>
+                                SEND BOOKING REQUEST
+                            </button>
+<button class="flex-1 px-8 border-2 border-slate-100 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-extrabold h-16 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-700 transition-all duration-300">
+                                CANCEL
+                            </button>
+</div>
+<p class="text-center text-slate-400 text-[12px] leading-relaxed max-w-lg mx-auto font-medium">
+                            By submitting, you agree to CleanBite's <a class="underline text-primary-dark hover:text-slate-600 transition-colors" href="#">Booking Terms</a> and our industry-leading commitment to transparent hygiene standards.
+                        </p>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-16 px-10 flex flex-col md:flex-row justify-between items-center gap-8 text-slate-400 text-xs border-t border-slate-100 dark:border-slate-800 mt-16 bg-white dark:bg-slate-900/50">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-dark text-xl">verified_user</span>
+</div>
+<span class="font-bold tracking-tight">Transparent Hygiene Standards © 2024 CleanBite. Global Safety Network.</span>
+</div>
+<div class="flex gap-10 font-black uppercase tracking-widest text-[10px]">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Partner Help</a>
+</div>
+</footer>
+</div>
+
+<!-- Map Modal -->
+<div id="mapModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+<div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl w-full max-w-4xl h-[80vh] flex flex-col">
+<div class="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Select Location</h3>
+<button onclick="closeMapModal()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-500">close</span>
+</button>
+</div>
+<div class="flex-1 relative">
+<div id="map" class="w-full h-full rounded-b-3xl"></div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
+<button onclick="confirmLocation()" class="bg-primary text-slate-900 px-6 py-3 rounded-full font-bold shadow-lg hover:bg-primary-dark transition-colors">
+Confirm Location
+</button>
+<button onclick="closeMapModal()" class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white px-6 py-3 rounded-full font-bold shadow-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+Cancel
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<script src="js/api.js"></script>
+
+<script>
+let map, marker, selectedLocation = null;
+
+// Load pre-selected vendor if coming from vendor detail page
+document.addEventListener('DOMContentLoaded', function() {
+    const selectedVendor = JSON.parse(localStorage.getItem('cleanbite_selected_vendor') || 'null');
+    if (selectedVendor) {
+        // Update the search input to show selected vendor
+        const searchInput = document.querySelector('input[placeholder*="certified vendors"]');
+        if (searchInput) {
+            searchInput.value = selectedVendor.name;
+            searchInput.readOnly = true;
+            searchInput.classList.add('bg-primary/10', 'border-primary');
+        }
+        
+        // Show selected vendor info
+        const searchContainer = document.querySelector('.relative.max-w-2xl');
+        if (searchContainer) {
+            const vendorInfo = document.createElement('div');
+            vendorInfo.className = 'mt-4 p-4 bg-primary/10 border border-primary/20 rounded-2xl';
+            vendorInfo.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                    <span class="text-sm font-bold text-primary-dark">Selected: ${selectedVendor.name}</span>
+                    <button onclick="clearVendorSelection()" class="ml-auto text-xs text-gray-500 hover:text-gray-700">Change</button>
+                </div>
+            `;
+            searchContainer.appendChild(vendorInfo);
+        }
+    }
+});
+
+function clearVendorSelection() {
+    localStorage.removeItem('cleanbite_selected_vendor');
+    location.reload();
+}
+
+function openMapModal() {
+    document.getElementById('mapModal').classList.remove('hidden');
+    document.getElementById('mapModal').classList.add('flex');
+    initMap();
+}
+
+function closeMapModal() {
+    document.getElementById('mapModal').classList.add('hidden');
+    document.getElementById('mapModal').classList.remove('flex');
+}
+
+function initMap() {
+    // Get user's current location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            loadMapWithLocation(lat, lng);
+            selectedLocation = `${lat},${lng}`;
+        }, function() {
+            // Fallback to India if geolocation fails
+            loadMapWithLocation(20.593684, 77.7250245);
+            selectedLocation = "India";
+        });
+    } else {
+        // Fallback to India if geolocation not supported
+        loadMapWithLocation(20.593684, 77.7250245);
+        selectedLocation = "India";
+    }
+}
+
+function loadMapWithLocation(lat, lng) {
+    const mapContainer = document.getElementById('map');
+    mapContainer.innerHTML = `
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15000!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1234567890" 
+            width="100%" 
+            height="100%" 
+            style="border:0;border-radius:0 0 1.5rem 1.5rem;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            <span class="material-symbols-outlined text-red-500 text-4xl drop-shadow-lg">location_on</span>
+        </div>
+        <div class="absolute top-4 left-4 bg-white dark:bg-slate-800 p-2 rounded-lg shadow-lg text-xs text-slate-600 dark:text-slate-300">
+            Click anywhere on map to pin venue location
+        </div>
+    `;
+}
+
+function confirmLocation() {
+    if (selectedLocation) {
+        const locationInput = document.querySelector('input[placeholder*="Stanford University"]');
+        locationInput.value = selectedLocation;
+        closeMapModal();
+    }
+}
+</script>
+
+</body></html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CleanBite - User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a0d9b5",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#151d18",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Epilogue', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#131614] dark:text-white min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dee3e0] dark:border-[#2d3a31] bg-white dark:bg-[#1c2620] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<button onclick="history.back()" class="flex items-center gap-2 text-[#6b8072] hover:text-[#131614] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-medium">Back</span>
+</button>
+<div onclick="window.location.href='homepage.html'" class="flex items-center gap-4 text-[#131614] dark:text-white cursor-pointer">
+<img src="Screenshot 2025-11-27 160334.png" alt="CleanBite Logo" class="size-8 rounded-lg object-cover">
+<h2 class="text-[#131614] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">CleanBite</h2>
+</div>
+
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden lg:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#6b8072] flex border-none bg-background-light dark:bg-[#2d3a31] items-center justify-center pl-4 rounded-l-lg" data-icon="MagnifyingGlass">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-background-light dark:bg-[#2d3a31] focus:ring-0 h-full placeholder:text-[#6b8072] px-4 rounded-r-lg text-base font-normal" placeholder="Search safety ratings..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-background-light dark:bg-[#2d3a31] text-[#131614] dark:text-white hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile picture placeholder showing a smiling face" style='background-image: url("profilepic.jpeg");'></div>
+</div>
+</header>
+<main class="flex flex-col items-center py-10 px-4">
+<div class="layout-content-container flex flex-col max-w-[960px] w-full gap-8">
+<!-- Profile Header Section -->
+<section class="bg-white dark:bg-[#1c2620] rounded-xl p-8 border border-[#dee3e0] dark:border-[#2d3a31] flex flex-col md:flex-row items-center md:items-end justify-between gap-6 shadow-sm">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20 border-2 border-primary" data-alt="User profile avatar" style='background-image: url("profilepic.jpeg");'></div>
+<div class="absolute bottom-1 right-1 bg-primary text-white p-1 rounded-full border-2 border-white dark:border-[#1c2620]">
+<span class="material-symbols-outlined text-[16px] block">verified</span>
+</div>
+</div>
+<div class="flex flex-col items-center md:items-start">
+<h1 id="userName" class="text-[#131614] dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Alex Johnson</h1>
+<div class="flex flex-wrap justify-center md:justify-start gap-2 mt-2">
+<span class="bg-primary/20 text-emerald-800 dark:text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Verified Reviewer</span>
+<span class="bg-background-light dark:bg-[#2d3a31] text-[#6b8072] text-xs font-medium px-3 py-1 rounded-full">Member Since Jan 2023</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button onclick="openEditModal()" class="flex-1 md:flex-none flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span>Edit Profile</span>
+</button>
+</div>
+</section>
+<!-- Account Dashboard Title -->
+<div class="flex items-center justify-between px-2">
+<h2 class="text-[#131614] dark:text-white text-[22px] font-bold leading-tight">Account Dashboard</h2>
+<div class="h-px flex-1 bg-[#dee3e0] dark:bg-[#2d3a31] mx-6"></div>
+</div>
+<!-- Activity Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- My Event Bookings -->
+<div onclick="openBookingsModal()" class="group cursor-pointer flex flex-col gap-4 rounded-xl border border-[#dee3e0] dark:border-[#2d3a31] bg-white dark:bg-[#1c2620] p-6 hover:border-primary hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[28px]">calendar_month</span>
+</div>
+<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">2 New</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-[#131614] dark:text-white text-lg font-bold">My Event Bookings</h3>
+<p class="text-[#6b8072] text-sm leading-normal">2 upcoming street food tours in Bangkok</p>
+</div>
+<div class="mt-2 flex items-center text-primary text-sm font-bold gap-1 group-hover:translate-x-1 transition-transform">
+<span>View Status</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+<!-- My Hygiene Reports -->
+<div onclick="openReportsModal()" class="group cursor-pointer flex flex-col gap-4 rounded-xl border border-[#dee3e0] dark:border-[#2d3a31] bg-white dark:bg-[#1c2620] p-6 hover:border-primary hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[28px]">assignment_turned_in</span>
+</div>
+<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">1 Pending</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-[#131614] dark:text-white text-lg font-bold">Hygiene Reports</h3>
+<p class="text-[#6b8072] text-sm leading-normal">3 reports filed | 1 currently under review</p>
+</div>
+<div class="mt-2 flex items-center text-primary text-sm font-bold gap-1 group-hover:translate-x-1 transition-transform">
+<span>Track Progress</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+<!-- Saved Vendors -->
+<div onclick="openFavoritesModal()" class="group cursor-pointer flex flex-col gap-4 rounded-xl border border-[#dee3e0] dark:border-[#2d3a31] bg-white dark:bg-[#1c2620] p-6 hover:border-primary hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[28px]">favorite</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-[#131614] dark:text-white text-lg font-bold">Saved Vendors</h3>
+<p class="text-[#6b8072] text-sm leading-normal">12 of your favorite safe street spots</p>
+</div>
+<div class="mt-2 flex items-center text-primary text-sm font-bold gap-1 group-hover:translate-x-1 transition-transform">
+<span>View Favorites</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+<!-- Notification Settings -->
+<div onclick="openNotificationsModal()" class="group cursor-pointer flex flex-col gap-4 rounded-xl border border-[#dee3e0] dark:border-[#2d3a31] bg-white dark:bg-[#1c2620] p-6 hover:border-primary hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[28px]">settings_suggest</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-[#131614] dark:text-white text-lg font-bold">Notifications</h3>
+<p class="text-[#6b8072] text-sm leading-normal">Manage your email and push alerts</p>
+</div>
+<div class="mt-2 flex items-center text-primary text-sm font-bold gap-1 group-hover:translate-x-1 transition-transform">
+<span>Manage Settings</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity Section -->
+<div class="flex flex-col gap-4">
+<h3 class="text-[#131614] dark:text-white text-lg font-bold leading-tight px-2">Recent Activity</h3>
+<div id="recentActivities" class="bg-white dark:bg-[#1c2620] border border-[#dee3e0] dark:border-[#2d3a31] rounded-xl overflow-hidden divide-y divide-[#dee3e0] dark:divide-[#2d3a31]">
+<div class="text-center text-[#6b8072] py-8">Loading activities...</div>
+</div>
+</div>
+<!-- Footer / Logout -->
+<div class="flex flex-col items-center pt-8 border-t border-[#dee3e0] dark:border-[#2d3a31]">
+<button onclick="signOut()" class="flex items-center justify-center gap-2 text-red-500 hover:text-red-700 font-bold transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out of Account</span>
+</button>
+<p class="mt-4 text-[#6b8072] text-xs">CleanBite v2.4.0 • Data Security &amp; Privacy Policy</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+<!-- Edit Profile Modal -->
+<div id="editModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+<div class="bg-white dark:bg-[#1c2620] rounded-xl p-6 w-full max-w-md border border-[#dee3e0] dark:border-[#2d3a31]">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-[#131614] dark:text-white">Edit Profile</h3>
+<button onclick="closeEditModal()" class="text-[#6b8072] hover:text-[#131614] dark:hover:text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="text-center">
+<div class="relative inline-block">
+<div id="profilePreview" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20 border-2 border-primary mx-auto" style='background-image: url("profilepic.jpeg");'></div>
+<button onclick="openCamera()" class="absolute bottom-0 right-0 bg-primary text-white p-2 rounded-full border-2 border-white dark:border-[#1c2620] hover:bg-primary/80">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#131614] dark:text-white mb-2">Full Name</label>
+<input id="nameInput" type="text" value="Alex Johnson" class="w-full px-4 py-3 border border-[#dee3e0] dark:border-[#2d3a31] rounded-lg bg-white dark:bg-[#2d3a31] text-[#131614] dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div class="flex gap-3 mt-6">
+<button onclick="var n=document.getElementById('nameInput').value.trim();if(n){document.getElementById('userName').textContent=n;closeEditModal();}" class="flex-1 bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">
+Save Changes
+</button>
+<button onclick="closeEditModal()" class="px-6 py-3 border border-[#dee3e0] dark:border-[#2d3a31] text-[#6b8072] rounded-lg hover:bg-[#f6f8f7] dark:hover:bg-[#2d3a31] transition-colors">
+Cancel
+</button>
+</div>
+</div>
+</div>
+
+<!-- Bookings Modal -->
+<div id="bookingsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-opacity duration-200">
+<div class="bg-white dark:bg-[#1c2620] rounded-xl w-full max-w-2xl max-h-[80vh] overflow-auto border border-[#dee3e0] dark:border-[#2d3a31] transform transition-all duration-300 scale-95 opacity-0" style="animation: modalSlideIn 0.3s ease-out forwards">
+<div class="flex items-center justify-between p-6 border-b border-[#dee3e0] dark:border-[#2d3a31]">
+<h3 class="text-xl font-bold text-[#131614] dark:text-white">My Event Bookings</h3>
+<button onclick="closeModal('bookingsModal')" class="text-[#6b8072] hover:text-[#131614] dark:hover:text-white transition-colors duration-200 hover:scale-110">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div id="bookingsContent" class="p-6">
+<div class="text-center text-[#6b8072]">Loading bookings...</div>
+</div>
+</div>
+</div>
+
+<!-- Reports Modal -->
+<div id="reportsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+<div class="bg-white dark:bg-[#1c2620] rounded-xl w-full max-w-2xl max-h-[80vh] overflow-auto border border-[#dee3e0] dark:border-[#2d3a31]">
+<div class="flex items-center justify-between p-6 border-b border-[#dee3e0] dark:border-[#2d3a31]">
+<h3 class="text-xl font-bold text-[#131614] dark:text-white">Hygiene Reports</h3>
+<button onclick="closeModal('reportsModal')" class="text-[#6b8072] hover:text-[#131614] dark:hover:text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6">
+<div class="space-y-4">
+<div class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-[#131614] dark:text-white">Report #8293</h4>
+<span class="px-2 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded">Under Review</span>
+</div>
+<p class="text-sm text-[#6b8072] mb-1"><strong>Vendor:</strong> Central Market Food Stall</p>
+<p class="text-sm text-[#6b8072] mb-1"><strong>Issue:</strong> Hygiene Concern</p>
+<p class="text-sm text-[#6b8072]"><strong>Submitted:</strong> 2 days ago</p>
+</div>
+<div class="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-[#131614] dark:text-white">Report #8291</h4>
+<span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">Resolved</span>
+</div>
+<p class="text-sm text-[#6b8072] mb-1"><strong>Vendor:</strong> Street Corner Noodles</p>
+<p class="text-sm text-[#6b8072] mb-1"><strong>Issue:</strong> Food Safety</p>
+<p class="text-sm text-[#6b8072]"><strong>Resolved:</strong> 1 week ago</p>
+</div>
+<div class="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-[#131614] dark:text-white">Report #8289</h4>
+<span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">Resolved</span>
+</div>
+<p class="text-sm text-[#6b8072] mb-1"><strong>Vendor:</strong> Bangkok Pad Thai</p>
+<p class="text-sm text-[#6b8072] mb-1"><strong>Issue:</strong> Cleanliness</p>
+<p class="text-sm text-[#6b8072]"><strong>Resolved:</strong> 2 weeks ago</p>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-[#dee3e0] dark:border-[#2d3a31]">
+<button onclick="window.location.href='report.html'" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">
+File New Report
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Favorites Modal -->
+<div id="favoritesModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+<div class="bg-white dark:bg-[#1c2620] rounded-xl w-full max-w-2xl max-h-[80vh] overflow-auto border border-[#dee3e0] dark:border-[#2d3a31]">
+<div class="flex items-center justify-between p-6 border-b border-[#dee3e0] dark:border-[#2d3a31]">
+<h3 class="text-xl font-bold text-[#131614] dark:text-white">Saved Vendors</h3>
+<button onclick="closeModal('favoritesModal')" class="text-[#6b8072] hover:text-[#131614] dark:hover:text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6">
+<div class="grid gap-4">
+<div class="flex items-center gap-4 p-4 border border-[#dee3e0] dark:border-[#2d3a31] rounded-lg hover:bg-background-light dark:hover:bg-[#243128] transition-colors">
+<div class="size-12 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131614] dark:text-white">Maria's Taco Truck</h4>
+<p class="text-sm text-[#6b8072]">Grade A • Mexican Street Food</p>
+</div>
+<button class="text-red-500 hover:text-red-700">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 border border-[#dee3e0] dark:border-[#2d3a31] rounded-lg hover:bg-background-light dark:hover:bg-[#243128] transition-colors">
+<div class="size-12 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">ramen_dining</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131614] dark:text-white">Bangkok Noodle House</h4>
+<p class="text-sm text-[#6b8072]">Grade A+ • Thai Cuisine</p>
+</div>
+<button class="text-red-500 hover:text-red-700">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 border border-[#dee3e0] dark:border-[#2d3a31] rounded-lg hover:bg-background-light dark:hover:bg-[#243128] transition-colors">
+<div class="size-12 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">local_pizza</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131614] dark:text-white">Street Corner Pizza</h4>
+<p class="text-sm text-[#6b8072]">Grade B+ • Italian Street Food</p>
+</div>
+<button class="text-red-500 hover:text-red-700">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Notifications Modal -->
+<div id="notificationsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+<div class="bg-white dark:bg-[#1c2620] rounded-xl w-full max-w-md border border-[#dee3e0] dark:border-[#2d3a31]">
+<div class="flex items-center justify-between p-6 border-b border-[#dee3e0] dark:border-[#2d3a31]">
+<h3 class="text-xl font-bold text-[#131614] dark:text-white">Notification Settings</h3>
+<button onclick="closeModal('notificationsModal')" class="text-[#6b8072] hover:text-[#131614] dark:hover:text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-bold text-[#131614] dark:text-white">Email Notifications</h4>
+<p class="text-sm text-[#6b8072]">Booking confirmations and updates</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input type="checkbox" checked class="sr-only peer">
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-bold text-[#131614] dark:text-white">Push Notifications</h4>
+<p class="text-sm text-[#6b8072]">Real-time alerts on mobile</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input type="checkbox" class="sr-only peer">
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-bold text-[#131614] dark:text-white">Safety Alerts</h4>
+<p class="text-sm text-[#6b8072]">Hygiene reports and warnings</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input type="checkbox" checked class="sr-only peer">
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<button onclick="saveNotificationSettings()" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">
+Save Settings
+</button>
+</div>
+</div>
+</div>
+
+<script>
+let cameraStream = null;
+
+// Modal functions
+function openBookingsModal() {
+    const modal = document.getElementById('bookingsModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.style.opacity = '0';
+    setTimeout(() => modal.style.opacity = '1', 10);
+    loadUserBookingsInModal();
+}
+
+function openReportsModal() {
+    const modal = document.getElementById('reportsModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.style.opacity = '0';
+    setTimeout(() => modal.style.opacity = '1', 10);
+    loadUserReportsInModal();
+}
+
+function openFavoritesModal() {
+    const modal = document.getElementById('favoritesModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.style.opacity = '0';
+    setTimeout(() => modal.style.opacity = '1', 10);
+}
+
+function openNotificationsModal() {
+    const modal = document.getElementById('notificationsModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.style.opacity = '0';
+    setTimeout(() => modal.style.opacity = '1', 10);
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.opacity = '0';
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }, 200);
+}
+
+async function loadUserReportsInModal() {
+    const reportsContent = document.querySelector('#reportsModal .p-6:last-child');
+    
+    // Show loading state
+    reportsContent.innerHTML = '<div class="text-center text-[#6b8072] py-8">Loading reports...</div>';
+    
+    if (!currentUser) {
+        reportsContent.innerHTML = '<div class="text-center text-[#6b8072] py-8">Please login to view reports</div>';
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE}/reports/${currentUser.id}`);
+        const reports = await response.json();
+        
+        if (reports.length === 0) {
+            reportsContent.innerHTML = `
+                <div class="text-center text-[#6b8072] py-8">No reports found</div>
+                <div class="mt-6 pt-4 border-t border-[#dee3e0] dark:border-[#2d3a31]">
+                    <button onclick="window.location.href='report.html'" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">
+                        File New Report
+                    </button>
+                </div>
+            `;
+            return;
+        }
+        
+        const reportsHtml = reports.map(report => {
+            const statusColor = report.status === 'submitted' ? 'amber' : 'green';
+            return `
+                <div class="p-4 bg-${statusColor}-50 dark:bg-${statusColor}-900/20 border border-${statusColor}-200 dark:border-${statusColor}-800 rounded-lg mb-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-[#131614] dark:text-white">${report.issueType}</h4>
+                        <span class="px-2 py-1 bg-${statusColor}-100 text-${statusColor}-700 text-xs font-bold rounded">${report.status}</span>
+                    </div>
+                    <p class="text-sm text-[#6b8072] mb-1"><strong>Vendor:</strong> ${report.vendorId}</p>
+                    <p class="text-sm text-[#6b8072] mb-1"><strong>Date:</strong> ${new Date(report.createdAt).toLocaleDateString()}</p>
+                    <p class="text-sm text-[#6b8072]"><strong>Description:</strong> ${report.description}</p>
+                </div>
+            `;
+        }).join('');
+        
+        reportsContent.innerHTML = `
+            <div class="space-y-4">
+                ${reportsHtml}
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#dee3e0] dark:border-[#2d3a31]">
+                <button onclick="window.location.href='report.html'" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">
+                    File New Report
+                </button>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Error loading reports:', error);
+        console.log('API_BASE:', API_BASE);
+        console.log('Current user:', currentUser);
+        
+        // Fallback: try to load from localStorage
+        const localReports = JSON.parse(localStorage.getItem('cleanbite_user_reports') || '[]');
+        if (localReports.length > 0) {
+            const reportsHtml = localReports.map(report => `
+                <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg mb-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-[#131614] dark:text-white">${report.issueType}</h4>
+                        <span class="px-2 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded">submitted</span>
+                    </div>
+                    <p class="text-sm text-[#6b8072] mb-1"><strong>Vendor:</strong> ${report.vendorId}</p>
+                    <p class="text-sm text-[#6b8072] mb-1"><strong>Date:</strong> ${new Date(report.createdAt).toLocaleDateString()}</p>
+                    <p class="text-sm text-[#6b8072]"><strong>Description:</strong> ${report.description}</p>
+                </div>
+            `).join('');
+            
+            reportsContent.innerHTML = `
+                <div class="space-y-4">
+                    ${reportsHtml}
+                </div>
+                <div class="mt-6 pt-4 border-t border-[#dee3e0] dark:border-[#2d3a31]">
+                    <button onclick="window.location.href='report.html'" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">
+                        File New Report
+                    </button>
+                </div>
+            `;
+        } else {
+            reportsContent.innerHTML = `
+                <div class="text-center text-red-500 py-8">Server offline. No reports found.</div>
+                <div class="mt-6 pt-4 border-t border-[#dee3e0] dark:border-[#2d3a31]">
+                    <button onclick="window.location.href='report.html'" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">
+                        File New Report
+                    </button>
+                </div>
+            `;
+        }
+    }
+}
+async function loadUserBookingsInModal() {
+    const bookingsContent = document.getElementById('bookingsContent');
+    
+    // Show loading state
+    bookingsContent.innerHTML = `
+        <div class="flex items-center justify-center py-8">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <span class="ml-3 text-[#6b8072]">Loading bookings...</span>
+        </div>
+    `;
+    
+    if (!currentUser) {
+        setTimeout(() => {
+            bookingsContent.innerHTML = '<div class="text-center text-[#6b8072] py-8">Please login to view bookings</div>';
+        }, 500);
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE}/bookings/${currentUser.id}`);
+        const bookings = await response.json();
+        
+        setTimeout(() => {
+            if (bookings.length === 0) {
+                bookingsContent.innerHTML = '<div class="text-center text-[#6b8072] py-8">No bookings found</div>';
+                return;
+            }
+            
+            const bookingsHtml = bookings.map((booking, index) => `
+                <div class="p-4 border border-[#dee3e0] dark:border-[#2d3a31] rounded-lg mb-4 opacity-0 animate-fade-in" style="animation-delay: ${index * 100}ms">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-[#131614] dark:text-white">${booking.vendorName}</h4>
+                        <span class="px-2 py-1 bg-primary/20 text-primary text-xs font-bold rounded">${booking.status}</span>
+                    </div>
+                    <p class="text-sm text-[#6b8072] mb-1"><strong>Event:</strong> ${booking.eventType}</p>
+                    <p class="text-sm text-[#6b8072] mb-1"><strong>Date:</strong> ${new Date(booking.date).toLocaleDateString()}</p>
+                    <p class="text-sm text-[#6b8072] mb-1"><strong>Location:</strong> ${booking.location}</p>
+                    ${booking.requirements ? `<p class="text-sm text-[#6b8072]"><strong>Requirements:</strong> ${booking.requirements}</p>` : ''}
+                </div>
+            `).join('');
+            
+            bookingsContent.innerHTML = bookingsHtml + `
+                <div class="mt-6 pt-4 border-t border-[#dee3e0] dark:border-[#2d3a31] opacity-0 animate-fade-in" style="animation-delay: ${bookings.length * 100}ms">
+                    <button onclick="window.location.href='booking.html'" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-[1.02]">
+                        Book New Event
+                    </button>
+                </div>
+            `;
+        }, 800);
+    } catch (error) {
+        setTimeout(() => {
+            bookingsContent.innerHTML = '<div class="text-center text-red-500 py-8">Error loading bookings</div>';
+        }, 500);
+    }
+}
+
+function openEditModal() {
+    document.getElementById('editModal').classList.remove('hidden');
+    document.getElementById('editModal').classList.add('flex');
+}
+
+function closeEditModal() {
+    document.getElementById('editModal').classList.add('hidden');
+    document.getElementById('editModal').classList.remove('flex');
+}
+
+async function saveProfile() {
+    console.log('saveProfile called'); // Debug log
+    const newName = document.getElementById('nameInput').value.trim();
+    console.log('New name:', newName); // Debug log
+    if (!newName) return;
+    
+    const button = document.querySelector('button[onclick="saveProfile()"]');
+    const originalText = button.textContent;
+    
+    button.innerHTML = 'Saving...';
+    button.disabled = true;
+    
+    // Update the name immediately
+    document.getElementById('userName').textContent = newName;
+    
+    // Update currentUser if exists
+    if (typeof currentUser !== 'undefined' && currentUser) {
+        currentUser.name = newName;
+        localStorage.setItem('cleanbite_user', JSON.stringify(currentUser));
+    }
+    
+    // Simulate API call
+    setTimeout(() => {
+        button.innerHTML = 'Saved!';
+        setTimeout(() => {
+            closeEditModal();
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }, 1000);
+    }, 500);
+}
+
+// Save notification settings
+function saveNotificationSettings() {
+    const button = document.querySelector('#notificationsModal button[class*="bg-primary"]');
+    const originalText = button.textContent;
+    
+    button.innerHTML = '<div class="flex items-center justify-center gap-2"><div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>Saving...</div>';
+    button.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+        button.innerHTML = '<span class="material-symbols-outlined">check</span> Settings Saved!';
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.disabled = false;
+            closeModal('notificationsModal');
+        }, 1500);
+    }, 1000);
+}
+
+async function openCamera() {
+    try {
+        cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.getElementById('cameraVideo');
+        video.srcObject = cameraStream;
+        document.getElementById('cameraModal').classList.remove('hidden');
+        document.getElementById('cameraModal').classList.add('flex');
+    } catch (error) {
+        alert('Camera access denied or not available');
+    }
+}
+
+function closeCamera() {
+    if (cameraStream) {
+        cameraStream.getTracks().forEach(track => track.stop());
+        cameraStream = null;
+    }
+    document.getElementById('cameraModal').classList.add('hidden');
+    document.getElementById('cameraModal').classList.remove('flex');
+}
+
+function capturePhoto() {
+    const video = document.getElementById('cameraVideo');
+    const canvas = document.getElementById('cameraCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    ctx.drawImage(video, 0, 0);
+    
+    const imageData = canvas.toDataURL('image/jpeg');
+    
+    // Update profile pictures
+    const profileElements = document.querySelectorAll('[style*="profilepic.jpeg"]');
+    profileElements.forEach(el => {
+        el.style.backgroundImage = `url(${imageData})`;
+    });
+    
+    closeCamera();
+}
+
+// Sign out function
+function signOut() {
+    localStorage.removeItem('cleanbite_user');
+    window.location.href = 'homepage.html';
+}
+</script>
+<script src="js/api.js"></script>
+</body></html>
