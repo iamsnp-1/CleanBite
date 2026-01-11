@@ -1,0 +1,429 @@
+<html class="light" lang="en"><head></head><body class="bg-background-light dark:bg-background-dark min-h-screen text-[#111814] dark:text-white pb-20 lg:pb-0">
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CleanBite - Explore Vendors</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#A0D9B5",
+                        "hygiene": "#A0D9B5",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102217",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Epilogue', sans-serif;
+        }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #A0D9B5;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+
+
+<header class="flex items-center justify-between border-b border-solid border-[#f0f4f2] dark:border-[#2a3a30] px-6 py-4 bg-white dark:bg-background-dark">
+<div class="max-w-[1280px] mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-4 lg:gap-8">
+<button onclick="history.back()" class="flex items-center gap-2 text-[#618971] hover:text-[#111814] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-medium">Back</span>
+</button>
+<div onclick="window.location.href='homepage.html'" class="flex items-center gap-2 text-[#111814] dark:text-white cursor-pointer">
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">CleanBite</h2>
+</div>
+<div class="hidden md:flex flex-1 min-w-[300px] lg:min-w-[480px]">
+<label class="flex flex-col w-full h-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#f0f4f2] dark:bg-[#1a2e22]">
+<div class="text-[#618971] flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full border-none bg-transparent focus:ring-0 h-full placeholder:text-[#618971] px-4 text-sm font-normal" placeholder="Search for 'Vada Pav', 'Momos'..." value=""/>
+</div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 lg:gap-8">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Favorites</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#f0f4f2] dark:bg-[#1a2e22] text-[#111814] dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-cover bg-center border-2 border-primary" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3P9hHAqhkk5Ky7jhSfO6PgSyOfF7UAHaYE0gAAPWUeb_bE1Wp_bWF6_GRfhQRSClXb6BoplTuSw6bsSWyOC1QFMCen742SjCSG_-slt7MXkwQOeKx9bXDSbNrl2va0MyGdY4WZIaC-_sPvyjFUPJ65Js9ou9T4orE4QmbP9DIHVUHCtQJFqfv6MYrNUqNDPeIErVPaelRsdZkwxsTIGq2alCsPHiNw3U_ijavz026hav8NYm7EEnIBijLWeRd3Bf_JCaK1p4xEIzM");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-6 p-4 md:p-10">
+<aside class="hidden lg:flex flex-col w-72 shrink-0 gap-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-2xl font-black tracking-tight">Filters</h1>
+<p class="text-[#618971] text-sm">Refine your vendor search</p>
+</div>
+<div class="flex flex-col gap-8 bg-white dark:bg-[#1a2e22] p-6 rounded-xl shadow-sm">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold flex items-center gap-2">
+                        Price Range
+                    </span>
+<span class="text-xs font-medium text-[#618971]">10 - 100</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-primary text-black text-xs font-bold border border-primary">10</button>
+<button class="flex-1 py-2 rounded-lg bg-[#f0f4f2] dark:bg-[#2a3a30] text-sm font-medium border border-transparent">50</button>
+<button class="flex-1 py-2 rounded-lg bg-[#f0f4f2] dark:bg-[#2a3a30] text-sm font-medium border border-transparent">100</button>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold flex items-center gap-2">
+                        Distance
+                    </span>
+
+</div>
+<input class="custom-slider w-full h-2 bg-[#f0f4f2] dark:bg-[#2a3a30] rounded-lg appearance-none cursor-pointer accent-primary" max="10" min="0" type="range" value="5"/>
+<div class="flex justify-between text-[10px] text-[#618971] px-1">
+<span>0km</span>
+<span>5km</span>
+<span>10km</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-sm font-bold flex items-center gap-2">
+                    Cuisine
+                </span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full bg-primary/20 text-xs font-semibold text-[#111814] dark:text-white border border-primary/30">All</button>
+<button class="px-3 py-1.5 rounded-full bg-[#f0f4f2] dark:bg-[#2a3a30] text-xs font-medium">Street Food</button>
+<button class="px-3 py-1.5 rounded-full bg-[#f0f4f2] dark:bg-[#2a3a30] text-xs font-medium">Beverages</button>
+<button class="px-3 py-1.5 rounded-full bg-[#f0f4f2] dark:bg-[#2a3a30] text-xs font-medium">Desserts</button>
+</div>
+</div>
+<button class="w-full py-3 bg-primary hover:bg-primary/90 text-[#111814] rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/20">
+                Apply Filters
+            </button>
+</div>
+</aside>
+<div class="flex-1 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-black leading-tight tracking-tight">Street Food Near You</h2>
+<p class="text-[#618971] text-base font-normal">Discover top-rated hygienic vendors in Mumbai, MH</p>
+</div>
+<div class="flex items-center gap-2 lg:hidden">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1a2e22] rounded-lg border border-[#f0f4f2] dark:border-[#2a3a30] shadow-sm">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span class="text-sm font-bold">Filters</span>
+</button>
+</div>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-black px-5 transition-all">
+<span class="text-sm font-bold">Open Now</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#1a2e22] px-5 border border-[#f0f4f2] dark:border-[#2a3a30] shadow-sm">
+<span class="text-sm font-medium">Top Rated</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#1a2e22] px-5 border border-[#f0f4f2] dark:border-[#2a3a30] shadow-sm">
+<span class="text-sm font-medium">Hygienic</span>
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#1a2e22] px-5 border border-[#f0f4f2] dark:border-[#2a3a30] shadow-sm">
+<span class="text-sm font-medium">Vegetarian</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="group flex flex-col bg-white dark:bg-[#1a2e22] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-[#f0f4f2] dark:border-[#2a3a30]">
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Delicious spicy Vada Pav plate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_vnKUDI-Oxm7el8G0_ZcsX5G_gauNQD4ThhqlRm9PSF85amQdNb1PRRZC519UpQBqCTFNOT3ZNQd8Qq_hvnHZuTtdyfc7IHlbpU-w5UHhjXI3bHBEdAK8eh3oiKfhD5zB1dNMFQNKsdcLikVupDgn4ElDeXz-xJAK2PbTExhmSRIJra3QfPzAmK6MiSfMJM825zNOcoSy0DuMuupJK8nDvlYl_wQpInoGcNsEgil_aOsjCgjCAoPG6yGt3wDluvinMvPHF51Mx7mP");'>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-orange-500 fill-orange-500 text-[16px]">star</span>
+<span class="text-xs font-bold text-black">4.9</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-hygiene px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-white text-[14px] font-bold">check_circle</span>
+<span class="text-[10px] font-black uppercase tracking-wider text-black">Hygiene Score: 98</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold group-hover:text-primary transition-colors">Sai Sagar Vada Pav</h3>
+<p class="text-xs text-[#618971] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                Dadar West, Mumbai
+                            </p>
+</div>
+<span class="text-sm font-bold text-primary">₹10</span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4f2] dark:border-[#2a3a30]">
+<span class="text-xs font-medium text-[#618971]">0.8 km away</span>
+<button class="text-sm font-bold flex items-center gap-1 text-primary hover:gap-2 transition-all">
+                            View Details <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2e22] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-[#f0f4f2] dark:border-[#2a3a30]">
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Steaming hot momos with spicy chutney" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3gOvs57VxkSzRkhWQHxm6qW5LBMyuyo5DcS9GUdzAOKP_wVcjH909yjw3qgcKXE9REB5KZle7RUasDlHpBvB6qfMGofw9MWN465qElEFcKbH6GzlWCpVaNR9kv0l4UrwxT02WQAQe6ZVNjVY5XCyVtGIEjzC1mgRD3w7bxK-FdmBON5TP4inBB5NbEhvGp6q3AFe6QtdWbgEGvUb0QOpEioEXArZwIw1C33_NoqDbnJqAG7FFNmklpyp9FKBexlx6MKMMPBFKQuLC");'>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-orange-500 fill-orange-500 text-[16px]">star</span>
+<span class="text-xs font-bold text-black">4.7</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-hygiene px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-white text-[14px] font-bold">check_circle</span>
+<span class="text-[10px] font-black uppercase tracking-wider text-black">Hygiene Score: 92</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold group-hover:text-primary transition-colors">Pema's Himalayan Momos</h3>
+<p class="text-xs text-[#618971] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                Bandra West, Mumbai
+                            </p>
+</div>
+<span class="text-sm font-bold text-primary">₹50</span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4f2] dark:border-[#2a3a30]">
+<span class="text-xs font-medium text-[#618971]">2.4 km away</span>
+<button class="text-sm font-bold flex items-center gap-1 text-primary hover:gap-2 transition-all">
+                            View Details <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2e22] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-[#f0f4f2] dark:border-[#2a3a30]">
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Traditional Masala Dosa with coconut chutney" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfOJVg9FoyYtlFrfoTT-TDfhC5mcGJMZzIuV_4YTLdMYizDp15zlrwocP6-HZIV-PhFOm4w2vHD9JPtjMIsjDPe0i-aIyvhvOmZnWjfm6vBFIEp1fKbxbne8tSOJomNETDLVvCGcapP8lFqsGvuX18csSn6Z6krATyqDLT-euvuLmZ3bQqjBk_7auqjqMHDFOTtCT-z4iQ4xb5Z30m2ei66sQVADpF796UvWfYi0Og00pO-8UgIimhzSDSugdMNBvT28WhbTs88rXa");'>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-orange-500 fill-orange-500 text-[16px]">star</span>
+<span class="text-xs font-bold text-black">4.5</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-hygiene px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-white text-[14px] font-bold">check_circle</span>
+<span class="text-[10px] font-black uppercase tracking-wider text-black">Hygiene Score: 95</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold group-hover:text-primary transition-colors">Anna's South Indian Express</h3>
+<p class="text-xs text-[#618971] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                Worli, Mumbai
+                            </p>
+</div>
+<span class="text-sm font-bold text-primary">₹50</span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4f2] dark:border-[#2a3a30]">
+<span class="text-xs font-medium text-[#618971]">3.1 km away</span>
+<button class="text-sm font-bold flex items-center gap-1 text-primary hover:gap-2 transition-all">
+                            View Details <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#1a2e22] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-[#f0f4f2] dark:border-[#2a3a30]">
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Spicy Pav Bhaji with generous butter" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLTbTnSldyOEpvH1PL5AqkaEQ24AchyCQceHxuyn9dZIvbbUDygLjo-A7MJD5u1euX4Q79TEn5yNwR0Cn7aWGnwgxEwgWtFfxHU8OeRI69CHvv7tlmkukGT-FE6GL9v7dXagQnSlRcTugrwkhfWatfmz2aCXyjIMGRbuwyqQ2fZ877I1B7f-rgAKTHU5Pz3Z13t99diPLgu2w0aSNknQddTk4QIPhLuTKh3wQ4q6HzvJVDG3P5JXB_HKL-wfrI7mCYETc6HnPBqYIK");'>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-orange-500 fill-orange-500 text-[16px]">star</span>
+<span class="text-xs font-bold text-black">4.8</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-hygiene px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-white text-[14px] font-bold">check_circle</span>
+<span class="text-[10px] font-black uppercase tracking-wider text-black">Hygiene Score: 89</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold group-hover:text-primary transition-colors">Mumbai Pav Bhaji Corner</h3>
+<p class="text-xs text-[#618971] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                Juhu, Mumbai
+                            </p>
+</div>
+<span class="text-sm font-bold text-primary">₹100</span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4f2] dark:border-[#2a3a30]">
+<span class="text-xs font-medium text-[#618971]">4.2 km away</span>
+<button class="text-sm font-bold flex items-center gap-1 text-primary hover:gap-2 transition-all">
+                            View Details <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center py-8">
+<button class="px-8 py-3 rounded-full border-2 border-[#f0f4f2] dark:border-[#2a3a30] text-sm font-bold hover:border-primary transition-colors">
+                Load More Vendors
+            </button>
+</div>
+</div>
+</main>
+<button class="fixed bottom-24 lg:bottom-4 right-6 md:right-10 flex items-center gap-2 bg-[#111814] text-white px-6 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform z-40">
+<span class="material-symbols-outlined">map</span>
+<span class="font-bold text-sm">View on Map</span>
+</button>
+<div class="fixed bottom-0 left-0 right-0 lg:hidden bg-white dark:bg-background-dark border-t border-[#f0f4f2] dark:border-[#2a3a30] px-6 py-3 flex justify-between items-center z-50">
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold">Explore</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#618971]">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favorites</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#618971]">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-medium">Recent</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#618971]">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</div>
+</div>
+
+</body>
+<script>
+// Filter functionality
+const vendors = document.querySelectorAll('.group.flex.flex-col.bg-white');
+const priceButtons = document.querySelectorAll('button[class*="flex-1 py-2 rounded-lg"]');
+const cuisineButtons = document.querySelectorAll('button[class*="px-3 py-1.5 rounded-full"]');
+const distanceSlider = document.querySelector('.custom-slider');
+const quickFilters = document.querySelectorAll('.flex.h-9.shrink-0');
+const applyButton = document.querySelector('button[class*="w-full py-3 bg-primary"]');
+
+// Vendor data
+const vendorData = [
+  { element: vendors[0], price: 10, distance: 0.8, cuisine: 'street-food', rating: 4.9, hygiene: 98, name: 'Sai Sagar Vada Pav' },
+  { element: vendors[1], price: 50, distance: 2.4, cuisine: 'street-food', rating: 4.7, hygiene: 92, name: "Pema's Himalayan Momos" },
+  { element: vendors[2], price: 50, distance: 3.1, cuisine: 'street-food', rating: 4.5, hygiene: 95, name: "Anna's South Indian Express" },
+  { element: vendors[3], price: 100, distance: 4.2, cuisine: 'street-food', rating: 4.8, hygiene: 89, name: 'Mumbai Pav Bhaji Corner' }
+];
+
+let filters = {
+  price: null,
+  distance: 5,
+  cuisine: 'all',
+  quickFilter: 'open'
+};
+
+// Price filter
+priceButtons.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    priceButtons.forEach(b => {
+      b.classList.remove('bg-primary', 'text-black', 'border-primary');
+      b.classList.add('bg-[#f0f4f2]', 'dark:bg-[#2a3a30]');
+    });
+    btn.classList.add('bg-primary', 'text-black', 'border-primary');
+    btn.classList.remove('bg-[#f0f4f2]', 'dark:bg-[#2a3a30]');
+    filters.price = [10, 50, 100][index];
+    applyFilters();
+  });
+});
+
+// Distance slider
+distanceSlider.addEventListener('input', (e) => {
+  filters.distance = parseInt(e.target.value);
+  document.querySelector('.text-primary').textContent = `Up to ${filters.distance}km`;
+  applyFilters();
+});
+
+// Cuisine filter
+cuisineButtons.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    cuisineButtons.forEach(b => {
+      b.classList.remove('bg-primary/20', 'border-primary/30');
+      b.classList.add('bg-[#f0f4f2]', 'dark:bg-[#2a3a30]');
+    });
+    btn.classList.add('bg-primary/20', 'border-primary/30');
+    btn.classList.remove('bg-[#f0f4f2]', 'dark:bg-[#2a3a30]');
+    filters.cuisine = ['all', 'street-food', 'beverages', 'desserts'][index];
+    applyFilters();
+  });
+});
+
+// Quick filters
+quickFilters.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    quickFilters.forEach(b => {
+      b.classList.remove('bg-primary', 'text-black');
+      b.classList.add('bg-white', 'dark:bg-[#1a2e22]');
+    });
+    btn.classList.add('bg-primary', 'text-black');
+    btn.classList.remove('bg-white', 'dark:bg-[#1a2e22]');
+    filters.quickFilter = ['open', 'top-rated', 'hygienic', 'vegetarian'][index];
+    applyFilters();
+  });
+});
+
+// Apply filters function
+function applyFilters() {
+  vendorData.forEach(vendor => {
+    let show = true;
+    
+    // Price filter
+    if (filters.price && vendor.price > filters.price) {
+      show = false;
+    }
+    
+    // Distance filter
+    if (vendor.distance > filters.distance) {
+      show = false;
+    }
+    
+    // Cuisine filter
+    if (filters.cuisine !== 'all' && vendor.cuisine !== filters.cuisine) {
+      show = false;
+    }
+    
+    // Quick filters
+    if (filters.quickFilter === 'top-rated' && vendor.rating < 4.7) {
+      show = false;
+    }
+    if (filters.quickFilter === 'hygienic' && vendor.hygiene < 95) {
+      show = false;
+    }
+    
+    // Show/hide vendor
+    vendor.element.style.display = show ? 'flex' : 'none';
+  });
+  
+  // Update results count
+  const visibleCount = vendorData.filter(v => v.element.style.display !== 'none').length;
+  document.querySelector('p.text-[#618971].text-base').textContent = `Found ${visibleCount} hygienic vendors in Mumbai, MH`;
+}
+
+// Apply button
+applyButton.addEventListener('click', applyFilters);
+
+// Initialize
+applyFilters();
+</script>
+</html>
