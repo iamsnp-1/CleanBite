@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CleanBite - Sign Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a0d9b5",
+              "background-light": "#f6f8f7",
+              "background-dark": "#151d18",
+            },
+            fontFamily: {
+              "display": ["Epilogue", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Epilogue', sans-serif;
+        }
+        .bg-soft-gradient {
+            background: radial-gradient(circle at top left, #a0d9b522 0%, #f6f8f7 100%);
+        }
+        .dark .bg-soft-gradient {
+            background: radial-gradient(circle at top left, #a0d9b511 0%, #151d18 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dee3e0] dark:border-[#2d3831] px-6 py-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button onclick="history.back()" class="flex items-center gap-2 text-[#6b8072] hover:text-[#131614] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-medium">Back</span>
+</button>
+<div onclick="window.location.href='homepage.html'" class="flex items-center gap-4 text-[#131614] dark:text-white cursor-pointer">
+<img src="Screenshot 2025-11-27 160334.png" alt="CleanBite Logo" class="size-6 rounded">
+<h2 class="text-[#131614] dark:text-white text-xl font-bold leading-tight tracking-tight">CleanBite</h2>
+</div>
+</div>
+<button onclick="window.location.href='login.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary/20 hover:bg-primary/30 text-[#131614] dark:text-white text-sm font-bold transition-all">
+<span>Login</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center p-6 bg-soft-gradient">
+<div class="w-full max-w-[480px] space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Header Text -->
+<div class="text-center">
+<h1 class="text-[#131614] dark:text-white tracking-tight text-4xl font-bold leading-tight mb-2">Start Eating Cleaner</h1>
+<p class="text-[#6b8072] dark:text-[#aabcb0] text-base font-normal max-w-[360px] mx-auto">Create your CleanBite account to explore hygiene-rated street food.</p>
+</div>
+<!-- Signup Card -->
+<div class="bg-white dark:bg-[#1c2620] p-8 rounded-xl shadow-xl shadow-black/5 border border-[#dee3e0] dark:border-[#2d3831]">
+<form class="space-y-5" onsubmit="handleSignup(event)">
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="text-[#131614] dark:text-white text-sm font-semibold">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#6b8072] text-xl">person</span>
+<input name="name" class="w-full rounded-lg border border-[#dee3e0] dark:border-[#2d3831] bg-white dark:bg-background-dark py-3.5 pl-12 pr-4 text-[#131614] dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-[#6b8072]/50" placeholder="e.g., Rahul Sharma" type="text" required/>
+</div>
+</div>
+<!-- Mobile Number -->
+<div class="flex flex-col gap-2">
+<label class="text-[#131614] dark:text-white text-sm font-semibold">Mobile Number</label>
+<div class="flex">
+<div class="flex items-center justify-center px-4 bg-background-light dark:bg-background-dark/50 border border-r-0 border-[#dee3e0] dark:border-[#2d3831] rounded-l-lg text-[#131614] dark:text-white font-medium">
+                                +91
+                            </div>
+<div class="relative flex-1">
+<input name="mobile" class="w-full rounded-r-lg border border-[#dee3e0] dark:border-[#2d3831] bg-white dark:bg-background-dark py-3.5 px-4 text-[#131614] dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-[#6b8072]/50" placeholder="98765 43210" type="tel" required/>
+</div>
+</div>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-2">
+<label class="text-[#131614] dark:text-white text-sm font-semibold">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#6b8072] text-xl">lock</span>
+<input name="password" class="w-full rounded-lg border border-[#dee3e0] dark:border-[#2d3831] bg-white dark:bg-background-dark py-3.5 pl-12 pr-12 text-[#131614] dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-[#6b8072]/50" placeholder="••••••••" type="password" required/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-[#6b8072] hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<!-- Main CTA -->
+<button class="w-full bg-primary hover:bg-[#8ccfa4] text-[#131614] font-bold py-4 rounded-lg shadow-lg shadow-primary/20 transition-all transform active:scale-[0.98] mt-2" type="submit">
+                        Create Account
+                    </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-8">
+<div class="flex-1 border-t border-[#dee3e0] dark:border-[#2d3831]"></div>
+<span class="px-4 text-xs font-semibold text-[#6b8072] uppercase tracking-wider">Quick Sign Up</span>
+<div class="flex-1 border-t border-[#dee3e0] dark:border-[#2d3831]"></div>
+</div>
+<!-- Social Sign Up -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-[#dee3e0] dark:border-[#2d3831] rounded-lg hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors">
+<div class="size-5 bg-contain bg-no-repeat bg-center" data-alt="Google colorful logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAq2AFc7fpO0EZEbZ-ogm_PtsYJU-50C9GKApAR5fDLIUqnd9Nq-BJphztGd-wKfbLm5uDUG0Kstd-TWdIL_DGpM0QYtlA6FHqnYdEMdSyZgoH6O9o7V_e0SR6nPhJxqPxfc8pCtGmOjToLgzimSmWC3oVwjNMIQlFTjldaThQ7lvmmv61z2Cm4AMPPQmhHJZcqA3vU8jEbWpYjNJnYWlLyA-G6CEbR8YVA4Z7HEA9R3dtpkn0AaYQZXri_962G6ZOJC5G28fOLGfar')"></div>
+<span class="text-sm font-semibold text-[#131614] dark:text-white">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-[#0087FF] border border-[#0087FF] rounded-lg hover:brightness-110 transition-colors">
+<span class="material-symbols-outlined text-white text-xl">verified_user</span>
+<span class="text-sm font-semibold text-white">Truecaller</span>
+</button>
+</div>
+<!-- Trust Note -->
+<p class="mt-8 text-center text-[#6b8072] dark:text-[#aabcb0] text-xs italic">
+                    "Join the community for safer street food."
+                </p>
+</div>
+<!-- Secondary Action -->
+<p class="text-center text-[#131614] dark:text-white text-sm">
+                Already have an account? 
+                <a onclick="window.location.href='login.html'" class="text-primary font-bold hover:underline decoration-2 underline-offset-4 ml-1 cursor-pointer">Log In</a>
+</p>
+</div>
+</main>
+<!-- Footer Links -->
+<footer class="py-8 px-6 border-t border-[#dee3e0] dark:border-[#2d3831] bg-white dark:bg-background-dark">
+<div class="max-w-[960px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[#6b8072] dark:text-[#aabcb0] text-xs">© 2024 CleanBite Hygiene Portal. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-[#6b8072] dark:text-[#aabcb0] text-xs hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#6b8072] dark:text-[#aabcb0] text-xs hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-[#6b8072] dark:text-[#aabcb0] text-xs hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</body>
+<script src="js/api.js"></script>
+</html>
